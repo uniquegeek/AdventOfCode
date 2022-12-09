@@ -23,7 +23,6 @@ $wintable += @([pscustomobject]@{X=3;Y=6;Z=0})
 $wintable += @([pscustomobject]@{X=6;Y=3;Z=0})
 $wintable += @([pscustomobject]@{X=6;Y=0;Z=3})
 
-$lines = $data.Count
 $totalwin = [int]"0"
 
 foreach ($d in $data) {
