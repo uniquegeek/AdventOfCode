@@ -1,3 +1,5 @@
+#https://adventofcode.com/2022/day/2
+#uniquegeek@gmail.com
 $infile = "advent02.txt"
 $data = Get-Content $infile
 #input looks like:
