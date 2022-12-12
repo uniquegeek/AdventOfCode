@@ -35,7 +35,7 @@ foreach ($s in $sack) {
         [string]$searchItem = ($uniqueItems1).substring($i,1)
         [string]$secondbag = $uniqueItems2
         if ($secondbag.Contains($searchItem)){
-            $v = [byte][char]$searchItem
+            $v = [byte][char]$searchItem  #get ASCII value
             if (($v -ge 97) -and ($v -le 122)) {  #lowercase alphachar
                 $v = $v - $lowerConvert
             } else {
