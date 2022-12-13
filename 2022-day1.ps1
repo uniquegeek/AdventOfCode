@@ -1,25 +1,38 @@
 #https://adventofcode.com/2022/day/1
 #uniquegeek@gmail.com
+
 $infile = "advent01.txt"
 $data = Get-Content $infile
 
 $production = @()
 $lines = $data.Count
-[int]$linenum = "1"
-[int]$elfnum = "1"
-[int]$calories = "0"
+$linenum = 1
+$elfnum = 1
+$calories = 0
 
 foreach ($d in $data) {
     if ($d) {
-        $calories = $calories + [int]$d
+        $calories = $calories + $d
     } else {
         $production += @([pscustomobject]@{Elf=$elfnum;Calories=$calories})
         $elfnum++
+        $calories = 0
     }
     if ($linenum -eq $lines) {
         $production += @([pscustomobject]@{Elf=$elfnum;Calories=$calories})
     }
     $linenum++
 }
-write-host "Most Calories Carried:"
-$production | Sort-Object -Property Calories -Descending | Select-Object -First 1
+
+$most = $production | Sort-Object -Property Calories -Descending | Select-Object -First 1
+$least = $production | Sort-Object -Property Calories | Select-Object -First 1
+write-host "Most Calories Carried: "$most
+write-host "Least Calories Carried: "$least
+
+$topThree = $production | Sort-Object -Property Calories -Descending | Select-Object -First 3
+$topThreeTotal = 0
+foreach ($t in $topThree) {
+    $topThreeTotal = $topThreeTotal + $t.calories
+}
+write-host "Top Three Total Calories: "$topThreeTotal
+$topThree
